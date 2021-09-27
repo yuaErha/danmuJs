@@ -10,7 +10,7 @@
 // @match        https://*/*
 // @icon         127.0.0.1
 // @connect      *
-// @require      https://raw.githubusercontent.com/nodeca/pako/master/dist/pako.js
+// @require      https://lib.baomitu.com/pako/2.0.4/pako.es5.min.js
 // @run-at       document-body
 // @grant        GM_addStyle
 // @grant        GM_xmlhttpRequest
