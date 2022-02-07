@@ -31,7 +31,7 @@ async tencentParse(url, offset = 0) {
   // const timestamp = Math.floor(timepoint / 30)
   // const offset = 30 * timestamp + 15
   const danmuUrl = 'http://mfm.video.qq.com/danmu?timestamp=' + offset + '&target_id=' + targetId
-  return await xhr({ method: 'GET', url: danmuUrl })
+  return xhr({ method: 'GET', url: danmuUrl })
     .then(resp => {
       let comments = JSON.parse(resp.responseText)['comments']
       return comments.map(
@@ -54,7 +54,7 @@ async iqiyiParse(url, offset = 0) {
 const { tvId } = await xhr({ method: 'GET', url }).then(resp => JSON.parse(resp.responseText.match(/:page-info='(.*?)'/m)[1]))
 // const offset = Math.ceil(timepoint / 60 / 5)
 const danmuUrl = `https://cmts.iqiyi.com/bullet/${String(tvId).substr(String(tvId).length - 4, 2)}/${String(tvId).substr(String(tvId).length - 2, 2)}/${tvId}_300_${offset}.z`
-return await xhr({
+return xhr({
   method: 'GET',
   url: danmuUrl,
   responseType: 'arraybuffer'
@@ -104,7 +104,7 @@ async mgtvParse(url, offset = 0) {
   const vid = splits[5].split('.')[0]
   // const offset = Math.floor(timepoint / 60)
   const danmuUrl = `https://galaxy.bz.mgtv.com/rdbarrage?version=3.0.0&vid=${vid}&cid=${cid}&time=${60 * 1000 * offset}`
-  return await xhr({ method: 'GET', url: danmuUrl })
+  return xhr({ method: 'GET', url: danmuUrl })
     .then(resp => {
       const comments = JSON.parse(resp.responseText)['data']['items']
       return comments.map(
